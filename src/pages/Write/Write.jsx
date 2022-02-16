@@ -18,7 +18,7 @@ export default function Write() {
     const newPost = {
       title,
       desc
-    };
+        };
     if (file) {
       const data =new FormData();
       const filename = Date.now() + file.name;
@@ -26,11 +26,17 @@ export default function Write() {
       data.append("file", file);
       newPost.photo = filename;
       try {
+        
         await myApi.post("/upload", data);
       } catch (err) {}
     }
     try {
-      const res = await myApi.post("/posts", newPost);
+      const config = {
+        headers: {
+          Authorization: `Bearer ${user.token}`,
+        },
+      };
+      const res = await myApi.post("/posts", newPost ,config);
       window.location.replace("/post/" + res.data._id);
     } catch (err) {}
   };
