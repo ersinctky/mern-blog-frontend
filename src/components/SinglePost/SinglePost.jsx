@@ -37,7 +37,7 @@ setPost(res.data)  }
           <span>
             Author:
             <b className="singlePostAuthor">
-            <Link className="link" to="/posts?username=Ersin">
+            <Link className="link" to={`/posts?user=${post.user}`} >
                 {post.user}
               </Link>
             </b>
