@@ -1,5 +1,6 @@
 import { useContext, useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { myApi } from "../../api/myApi";
 import {Context} from "../../context/Context"
@@ -14,6 +15,7 @@ export default function SinglePost() {
   const [title, setTitle] = useState("");
   const [desc, setDesc] = useState("");
   const [updateMode, setUpdateMode] = useState(false);
+  const history = useHistory()
 
   useEffect(() => {
     const getPost = async () => {
@@ -33,7 +35,8 @@ const handleDelete = async () => {
       },
     };
     await myApi.delete(`/posts/${post._id}`, config);
-    window.location.replace("/");
+    // window.location.replace("/");
+    history.push("/")
   } catch (err) {}
 };
 
@@ -89,7 +92,7 @@ return (
       <div className="singlePostInfo">
         <span className="singlePostAuthor">
           Author:
-          <Link to={`/?user=${post.username}`} className="link">
+          <Link to={`/?user=${post.user}`} className="link">
             <b> {post.user}</b>
           </Link>
         </span>
