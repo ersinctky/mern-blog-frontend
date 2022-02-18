@@ -6,6 +6,7 @@ import "./userlist.css";
 import { myApi } from "../../api/myApi";
 import { useLocation } from "react-router-dom";
 import { Context } from "../../context/Context";
+import Users from "../Users/Users";
 
 export default function Userlist() {
 
@@ -35,11 +36,13 @@ const {user}=useContext(Context)
   return (
     <>
     <Header />
-    <div className="home">
-      {/* <User user={user} /> */}
-     
+    <div className="userlist">
+      
+          <Users  users={users} />
+      
       <SideBar />
     </div>
+
   </>
   );
 }
