@@ -1,15 +1,20 @@
 import { useContext } from "react";
+import { useHistory } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { Context } from "../../context/Context";
 import "./topbar.css";
 
 export default function Topbar() {
   const { user,dispatch } = useContext(Context);
+  const history=useHistory()
   const PF = "http://localhost:5000/images/"
 
 
   const handleLogout=()=>{
-    dispatch({ type: "LOGOUT" });  }
+    dispatch({ type: "LOGOUT" }); 
+    history.push("/login")
+  }
+
   return (
     <div className="top">
       <div className="topLeft">
