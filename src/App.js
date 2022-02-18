@@ -24,6 +24,7 @@ function App() {
         </Route>
         <Route path="/register">{user ? <Homepage /> : <Register />}</Route>
         <Route path="/login">{user ? <Homepage /> : <Login />}</Route>
+
         <Route path="/post/:id">
           <Single />
         </Route>

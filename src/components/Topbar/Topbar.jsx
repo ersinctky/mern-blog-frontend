@@ -66,6 +66,22 @@ export default function Topbar() {
             </li>
           </ul>
         )}
+
+        {user && user.isAdmin===true && (
+          <ul className="topList">
+          <li className="topListItem">
+            <Link className="link" to="/admin/users">
+              USERS
+            </Link>
+          </li>
+          
+          <li className="topListItem">
+            <Link className="link" to="/admin/posts">
+              POSTS
+            </Link>
+          </li>
+        </ul>
+        )}
         <i className="topSearchIcon fas fa-search"></i>
       </div>
     </div>
