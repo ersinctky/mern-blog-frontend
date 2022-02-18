@@ -70,7 +70,7 @@ export default function Topbar() {
         {user && user.isAdmin===true && (
           <ul className="topList">
           <li className="topListItem">
-            <Link className="link" to="/admin/users">
+            <Link className="link" to="/admin/userlist">
               USERS
             </Link>
           </li>

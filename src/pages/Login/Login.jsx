@@ -3,7 +3,6 @@ import { useContext, useRef } from "react";
 import { Link } from "react-router-dom";
 import { Context } from "../../context/Context";
 import "./login.css";
-import { useHistory } from "react-router-dom";
 
 export default function Login() {
   const emailRef = useRef();
