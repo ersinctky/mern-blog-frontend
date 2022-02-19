@@ -26,7 +26,7 @@ const {user}=useContext(Context)
           };
       
       const res = await myApi.get("/users"+search,config)
-      console.log(res.data);
+      console.log(res.data ,search);
       setUsers(res.data)  
   }
     fetchUsers()

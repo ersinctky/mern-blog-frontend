@@ -75,7 +75,7 @@ return (
       ) : (
         <h1 className="singlePostTitle">
           {title}
-          {post.username === user?.username && (
+          {post.user === user?._id && (
             <div className="singlePostEdit">
               <i
                 className="singlePostIcon far fa-edit"
