@@ -2,6 +2,7 @@ import {myApi} from "../../api/myApi"
 import { useContext, useState } from "react";
 import "./write.css";
 import { Context } from "../../context/Context";
+import { useHistory } from "react-router-dom";
 
 
 
@@ -12,13 +13,14 @@ export default function Write() {
   const [desc, setDesc] = useState("");
   const [file, setFile] = useState(null);
   const { user } = useContext(Context);
+  const history=useHistory()
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     const newPost = {
       title,
-      desc
-        };
+      desc,
+    };
     if (file) {
       const data =new FormData();
       const filename = Date.now() + file.name;
@@ -26,8 +28,12 @@ export default function Write() {
       data.append("file", file);
       newPost.photo = filename;
       try {
-        
-        await myApi.post("/upload", data);
+        const config = {
+          headers: {
+            Authorization: `Bearer ${user.token}`,
+          },
+        };
+        await myApi.post("/posts/upload", data,config);
       } catch (err) {}
     }
     try {
@@ -36,9 +42,10 @@ export default function Write() {
           Authorization: `Bearer ${user.token}`,
         },
       };
-      const res = await myApi.post("/posts", newPost ,config);
-      window.location.replace("/post/" + res.data._id);
-    } catch (err) {}
+      const res = await myApi.post("/posts", newPost,config);
+      console.log(res.data);
+history.push("/")  
+  } catch (err) {}
   };
   return (
     <div className="write">

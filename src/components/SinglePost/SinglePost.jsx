@@ -23,6 +23,9 @@ export default function SinglePost() {
       setPost(res.data);
       setTitle(res.data.title);
       setDesc(res.data.desc);
+      console.log(res.data);
+      
+
     };
     getPost();
   }, [path]);
@@ -35,8 +38,7 @@ const handleDelete = async () => {
       },
     };
     await myApi.delete(`/posts/${post._id}`, config);
-    // window.location.replace("/");
-    history.push("/")
+history.push("/")
   } catch (err) {}
 };
 
@@ -62,7 +64,7 @@ return (
   <div className="singlePost">
     <div className="singlePostWrapper">
       {post.photo && (
-        <img src={PF + post.photo} alt="post" className="singlePostImg" />
+        <img src={post.photo} alt="post" className="singlePostImg" />
       )}
       {updateMode ? (
         <input
@@ -75,7 +77,7 @@ return (
       ) : (
         <h1 className="singlePostTitle">
           {title}
-          {post.user === user?._id && (
+          { post?.user?._id === user?._id && (
             <div className="singlePostEdit">
               <i
                 className="singlePostIcon far fa-edit"
@@ -87,6 +89,7 @@ return (
               ></i>
             </div>
           )}
+
         </h1>
       )}
       <div className="singlePostInfo">

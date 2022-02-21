@@ -7,7 +7,7 @@ import "./topbar.css";
 export default function Topbar() {
   const { user,dispatch } = useContext(Context);
   const history=useHistory()
-  const PF = "http://localhost:5000/images/"
+  const PF = "http://localhost:5000/uploads/"
 
 
   const handleLogout=()=>{
@@ -47,7 +47,7 @@ export default function Topbar() {
           <Link className="link" to="/settings">
             <img
               className="topImg"
-              src={user.profilePic}
+              src={ user.profilePic}
               alt=""
             />
           </Link>
