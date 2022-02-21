@@ -75,13 +75,15 @@ export default function Settings() {
           <label>Username</label>
           <input
             type="text"
-            placeholder={user.name}
+            placeholder='Name'
+            value={user.name}
             onChange={(e) => setName(e.target.value)}
           />
           <label>Email</label>
           <input
             type="email"
-            placeholder={user.email}
+            placeholder="E-mail"
+            value={user.email}
             onChange={(e) => setEmail(e.target.value)}
           />
           <label>Password</label>

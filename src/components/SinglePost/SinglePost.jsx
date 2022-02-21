@@ -62,7 +62,7 @@ return (
   <div className="singlePost">
     <div className="singlePostWrapper">
       {post.photo && (
-        <img src={PF + post.photo} alt="" className="singlePostImg" />
+        <img src={PF + post.photo} alt="post" className="singlePostImg" />
       )}
       {updateMode ? (
         <input
@@ -93,7 +93,7 @@ return (
         <span className="singlePostAuthor">
           Author:
           <Link to={`/?user=${post.user}`} className="link">
-            <b> {post.user}</b>
+            <b> {post?.user?.name}</b>
           </Link>
         </span>
         <span className="singlePostDate">
