@@ -18,22 +18,30 @@ export default function Write() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     const newPost = {
+      
       title,
       desc,
     };
-    if (file) {
+    if (true) {
       const data =new FormData();
+      // data.append("file", file);
       const filename = Date.now() + file.name;
       data.append("name", filename);
       data.append("file", file);
+      data.append("title", title);
+      data.append("desc", desc);
       newPost.photo = filename;
+      console.log(filename);
       try {
         const config = {
           headers: {
             Authorization: `Bearer ${user.token}`,
           },
         };
-        await myApi.post("/posts/upload", data,config);
+        const res = await myApi.post("/posts/upload", data,config);
+        console.log(res.data);
+              history.push("/")
+
       } catch (err) {}
     }
     try {
@@ -44,8 +52,9 @@ export default function Write() {
       };
       const res = await myApi.post("/posts", newPost,config);
       console.log(res.data);
-history.push("/")  
-  } catch (err) {}
+      console.log(file);
+      history.push("/")
+    } catch (err) {}
   };
   return (
     <div className="write">

@@ -25,7 +25,7 @@ export default function Homepage() {
   }
     fetchPosts()
 
-  },[search])
+  },[search,posts])
   
   return (
     <>
